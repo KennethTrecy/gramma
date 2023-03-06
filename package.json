@@ -15,11 +15,11 @@
   },
   "types": "src/index.d.ts",
   "scripts": {
-    "build": "rm -rf bin; pnpm build:win64; pnpm build:macos; pnpm build:linux64; pnpm build:zip; pnpm build:bundles",
+    "build": "rm -rf bin && pnpm build:win64 && pnpm build:macos && pnpm build:linux64 && pnpm build:zip && pnpm build:bundles",
     "build:win64": "pkg -c package.json -t node16-win-x64 --out-path bin/windows64 src/cli.js",
     "build:macos": "pkg -c package.json -t node16-macos-x64 --out-path bin/macos src/cli.js",
     "build:linux64": "pkg -c package.json -t node16-linux-x64 --out-path bin/linux64 src/cli.js",
-    "build:bundles": "pnpm build:esm; pnpm build:esm-min; pnpm build:iife",
+    "build:bundles": "pnpm build:esm && pnpm build:esm-min && pnpm build:iife",
     "build:esm": "esbuild src/index.js --bundle --outfile=bundle/gramma.esm.js --format=esm",
     "build:esm-min": "esbuild src/index.js --bundle --outfile=bundle/gramma.esm.min.js --format=esm --minify",
     "build:iife": "esbuild src/index.js --bundle --outfile=bundle/gramma.min.js --format=iife --minify --global-name=gramma",
